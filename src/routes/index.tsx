@@ -905,6 +905,17 @@ function Contact() {
                 </span>
                 <span className="link-underline">linkedin.com/in/john-rys-clanor-1b9828312</span>
               </a>
+              <a
+                href="https://v2.onlinejobs.ph/jobseekers/info/5163839"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 text-sm text-foreground"
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <Briefcase className="h-4 w-4" />
+                </span>
+                <span className="link-underline">OnlineJobs.ph Profile</span>
+              </a>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
                   <MapPin className="h-4 w-4" />
