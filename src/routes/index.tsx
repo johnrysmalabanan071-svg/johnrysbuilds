@@ -22,6 +22,7 @@ import {
   Layers,
   ShieldCheck,
   Cpu,
+  Briefcase,
 } from "lucide-react";
 
 import { useReveal } from "@/hooks/use-reveal";
