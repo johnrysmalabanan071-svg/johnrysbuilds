@@ -857,7 +857,7 @@ function Contact() {
             <div className="relative hidden md:flex justify-center">
               <div className="relative grid h-56 w-56 place-items-center rounded-full border border-white/10 bg-card animate-floaty">
                 <div className="absolute inset-0 rounded-full bg-white/5 blur-2xl" />
-                <Rocket className="relative h-24 w-24 text-foreground" />
+                <Workflow className="relative h-24 w-24 text-foreground" strokeWidth={1.75} />
                 <span className="absolute -top-2 -right-2 grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground">
                   <Sparkles className="h-5 w-5" />
                 </span>
