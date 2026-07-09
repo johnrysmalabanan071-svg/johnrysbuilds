@@ -840,122 +840,155 @@ function Contact() {
 
   return (
     <section id="contact" className="border-t border-border py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-2 lg:gap-24">
-        <div className="reveal">
-          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Contact</div>
-          <h2 className="mt-4 font-display text-5xl leading-[0.95] sm:text-6xl">
-            Let&apos;s Automate <em className="italic">Something</em>.
-          </h2>
-          <p className="mt-6 max-w-md text-muted-foreground leading-relaxed">
-            Have a repetitive process draining your time, or an idea for an AI agent? I&apos;d
-            love to hear about it.
-          </p>
-
-          <div className="mt-10 space-y-4">
-            <a
-              href="mailto:johnrysclanor22@gmail.com"
-              className="flex items-center gap-3 text-sm text-foreground"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-border">
-                <Mail className="h-4 w-4" />
-              </span>
-              <span className="link-underline">johnrysclanor22@gmail.com</span>
-            </a>
-            <a
-              href="tel:+639565365348"
-              className="flex items-center gap-3 text-sm text-foreground"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-border">
-                <Phone className="h-4 w-4" />
-              </span>
-              <span className="link-underline">+63 956 536 5348</span>
-            </a>
-            <a
-              href="https://linkedin.com/in/john-rys-clanor"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 text-sm text-foreground"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-border">
-                <Linkedin className="h-4 w-4" />
-              </span>
-              <span className="link-underline">linkedin.com/in/john-rys-clanor</span>
-            </a>
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-border">
-                <MapPin className="h-4 w-4" />
-              </span>
-              <span>Lipa City, Batangas, Philippines</span>
-            </div>
-          </div>
-
-          <div className="mt-10 flex items-center gap-3">
-            {[
-              {
-                icon: Linkedin,
-                href: "https://linkedin.com/in/john-rys-clanor",
-                label: "LinkedIn",
-              },
-              { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
-              { icon: Phone, href: "tel:+639565365348", label: "Phone" },
-            ].map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="btn-press grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+      <div className="mx-auto max-w-7xl px-6">
+        {/* CTA Banner */}
+        <div className="reveal relative overflow-hidden rounded-3xl border border-border p-10 md:p-14" style={{ backgroundColor: "var(--surface)" }}>
+          <div className="pointer-events-none absolute inset-0 dot-grid opacity-40" />
+          <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+          <div className="relative grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                Let&apos;s Work Together
+              </div>
+              <h2 className="mt-6 font-display text-4xl leading-[1.05] sm:text-5xl md:text-6xl font-semibold">
+                Have a project <em className="italic">in mind?</em>
+              </h2>
+              <p className="mt-5 max-w-md text-muted-foreground leading-relaxed">
+                I&apos;m always open to discussing new projects, automation ideas, or opportunities to help your business run itself.
+              </p>
+              <Button
+                size="lg"
+                onClick={() => document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" })}
+                className="btn-press mt-8 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 gap-2 px-6"
               >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+                Get In Touch <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
+            <div className="relative hidden md:flex justify-center">
+              <div className="relative grid h-56 w-56 place-items-center rounded-full border border-white/10 bg-card animate-floaty">
+                <div className="absolute inset-0 rounded-full bg-white/5 blur-2xl" />
+                <Rocket className="relative h-24 w-24 text-foreground" />
+                <span className="absolute -top-2 -right-2 grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground">
+                  <Sparkles className="h-5 w-5" />
+                </span>
+                <span className="absolute -bottom-2 -left-2 grid h-10 w-10 place-items-center rounded-full bg-card border border-border">
+                  <Zap className="h-4 w-4" />
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <form
-          onSubmit={onSubmit}
-          className="reveal rounded-3xl border border-border bg-card p-8 shadow-[0_1px_0_0_rgba(0,0,0,0.04)] md:p-10"
-        >
-          <div className="space-y-6">
-            <FieldRow label="Your Name">
-              <Input
-                required
-                name="name"
-                placeholder="John Doe"
-                className="h-12 rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
-              />
-            </FieldRow>
-            <FieldRow label="Your Email">
-              <Input
-                required
-                type="email"
-                name="email"
-                placeholder="you@company.com"
-                className="h-12 rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
-              />
-            </FieldRow>
-            <FieldRow label="Tell me about your project or process">
-              <Textarea
-                required
-                name="message"
-                rows={5}
-                placeholder="What repetitive task or workflow would you like to automate?"
-                className="rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
-              />
-            </FieldRow>
+        {/* Form + Contact info */}
+        <div id="contact-form" className="mt-16 grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
+          <div className="reveal">
+            <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Contact</div>
+            <h2 className="mt-4 font-display text-4xl leading-[0.95] sm:text-5xl font-semibold">
+              Let&apos;s Automate <em className="italic">Something</em>.
+            </h2>
+            <p className="mt-6 max-w-md text-muted-foreground leading-relaxed">
+              Have a repetitive process draining your time, or an idea for an AI agent? I&apos;d
+              love to hear about it.
+            </p>
+
+            <div className="mt-10 space-y-4">
+              <a href="mailto:johnrysclanor22@gmail.com" className="flex items-center gap-3 text-sm text-foreground">
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <span className="link-underline">johnrysclanor22@gmail.com</span>
+              </a>
+              <a href="tel:+639565365348" className="flex items-center gap-3 text-sm text-foreground">
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <Phone className="h-4 w-4" />
+                </span>
+                <span className="link-underline">+63 956 536 5348</span>
+              </a>
+              <a
+                href="https://linkedin.com/in/john-rys-clanor"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 text-sm text-foreground"
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <Linkedin className="h-4 w-4" />
+                </span>
+                <span className="link-underline">linkedin.com/in/john-rys-clanor</span>
+              </a>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <MapPin className="h-4 w-4" />
+                </span>
+                <span>Lipa City, Batangas, Philippines</span>
+              </div>
+            </div>
+
+            <div className="mt-10 flex items-center gap-3">
+              {[
+                { icon: Linkedin, href: "https://linkedin.com/in/john-rys-clanor", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
+                { icon: Phone, href: "tel:+639565365348", label: "Phone" },
+              ].map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="btn-press grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
-          <Button
-            type="submit"
-            disabled={submitting}
-            size="lg"
-            className="btn-press mt-8 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
+          <form
+            onSubmit={onSubmit}
+            className="reveal rounded-3xl border border-border bg-card p-8 md:p-10"
+            style={{ boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6)" }}
           >
-            {submitting ? "Sending…" : "Send Message"}
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </form>
+            <div className="space-y-6">
+              <FieldRow label="Your Name">
+                <Input
+                  required
+                  name="name"
+                  placeholder="John Doe"
+                  className="h-12 rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30"
+                />
+              </FieldRow>
+              <FieldRow label="Your Email">
+                <Input
+                  required
+                  type="email"
+                  name="email"
+                  placeholder="you@company.com"
+                  className="h-12 rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30"
+                />
+              </FieldRow>
+              <FieldRow label="Tell me about your project or process">
+                <Textarea
+                  required
+                  name="message"
+                  rows={5}
+                  placeholder="What repetitive task or workflow would you like to automate?"
+                  className="rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30"
+                />
+              </FieldRow>
+            </div>
+
+            <Button
+              type="submit"
+              disabled={submitting}
+              size="lg"
+              className="btn-press mt-8 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
+            >
+              {submitting ? "Sending…" : "Send Message"}
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </form>
+        </div>
       </div>
     </section>
+
   );
 }
 
