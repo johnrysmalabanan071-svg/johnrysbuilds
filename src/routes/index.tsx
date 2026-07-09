@@ -22,6 +22,7 @@ import {
   Layers,
   ShieldCheck,
   Cpu,
+  Briefcase,
 } from "lucide-react";
 
 import { useReveal } from "@/hooks/use-reveal";
@@ -31,7 +32,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 
-import profileImg from "@/assets/profile.png.asset.json";
+import profileImg from "@/assets/johnrys-transparent.png.asset.json";
 import aiAppointment from "@/assets/ai-appointment-setter.jpeg.asset.json";
 import aiJobScraper from "@/assets/ai-job-scraper.png.asset.json";
 import fbAgent from "@/assets/fb-page-ai-agent.png.asset.json";
@@ -263,31 +264,20 @@ function Hero() {
         </div>
 
         <div className="reveal relative mx-auto w-full max-w-md lg:max-w-none">
-          <div className="absolute -inset-8 rounded-[2rem] bg-white/5 blur-2xl" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-card glow-ring">
-            <img
-              src={profileImg.url}
-              alt="Portrait of John Rys M. Clanor"
-              width={1024}
-              height={1280}
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/60 to-transparent p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="font-display text-2xl">Est. 2024</div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                    Lipa City, PH
-                  </div>
-                </div>
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground animate-floaty">
-                  <Sparkles className="h-5 w-5" />
-                </div>
-              </div>
-            </div>
+          {/* Soft glow behind the transparent portrait */}
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute left-1/2 top-1/2 h-[85%] w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-2xl" />
           </div>
-          {/* Floating stat badge overlapping photo */}
-          <div className="absolute -bottom-6 -left-6 rounded-2xl border border-white/10 bg-card p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] animate-floaty">
+          <img
+            src={profileImg.url}
+            alt="Portrait of John Rys M. Clanor"
+            width={1024}
+            height={1024}
+            className="relative h-auto w-full object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)]"
+          />
+          {/* Floating stat badge overlapping photo (bottom-right) */}
+          <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 rounded-2xl border border-white/10 bg-card p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] animate-floaty">
             <div className="flex items-center gap-3">
               <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground">
                 <Rocket className="h-5 w-5" />
@@ -301,6 +291,7 @@ function Hero() {
             </div>
           </div>
         </div>
+
       </div>
 
 
@@ -665,21 +656,20 @@ function Projects() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className="btn-press relative pb-2 text-sm font-medium tracking-wide"
+              className={`relative bg-transparent border-0 p-0 pb-2 text-sm font-medium tracking-wide focus:outline-none focus-visible:outline-none transition-colors ${
+                filter === f
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              <span
-                className={
-                  filter === f ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }
-              >
-                {f}
-              </span>
+              {f}
               {filter === f && (
                 <span className="absolute inset-x-0 -bottom-[1px] h-[2px] bg-primary" />
               )}
             </button>
           ))}
         </div>
+
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p, i) => (
@@ -867,7 +857,7 @@ function Contact() {
             <div className="relative hidden md:flex justify-center">
               <div className="relative grid h-56 w-56 place-items-center rounded-full border border-white/10 bg-card animate-floaty">
                 <div className="absolute inset-0 rounded-full bg-white/5 blur-2xl" />
-                <Rocket className="relative h-24 w-24 text-foreground" />
+                <Workflow className="relative h-24 w-24 text-foreground" strokeWidth={1.75} />
                 <span className="absolute -top-2 -right-2 grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground">
                   <Sparkles className="h-5 w-5" />
                 </span>
@@ -905,7 +895,7 @@ function Contact() {
                 <span className="link-underline">+63 956 536 5348</span>
               </a>
               <a
-                href="https://linkedin.com/in/john-rys-clanor"
+                href="https://www.linkedin.com/in/john-rys-clanor-1b9828312/"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-3 text-sm text-foreground"
@@ -913,7 +903,18 @@ function Contact() {
                 <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
                   <Linkedin className="h-4 w-4" />
                 </span>
-                <span className="link-underline">linkedin.com/in/john-rys-clanor</span>
+                <span className="link-underline">linkedin.com/in/john-rys-clanor-1b9828312</span>
+              </a>
+              <a
+                href="https://v2.onlinejobs.ph/jobseekers/info/5163839"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 text-sm text-foreground"
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <Briefcase className="h-4 w-4" />
+                </span>
+                <span className="link-underline">OnlineJobs.ph Profile</span>
               </a>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
@@ -925,14 +926,16 @@ function Contact() {
 
             <div className="mt-10 flex items-center gap-3">
               {[
-                { icon: Linkedin, href: "https://linkedin.com/in/john-rys-clanor", label: "LinkedIn" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/john-rys-clanor-1b9828312/", label: "LinkedIn" },
                 { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
                 { icon: Phone, href: "tel:+639565365348", label: "Phone" },
+                { icon: Briefcase, href: "https://v2.onlinejobs.ph/jobseekers/info/5163839", label: "OnlineJobs.ph" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
+                  title={label}
                   className="btn-press grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
                 >
                   <Icon className="h-4 w-4" />
@@ -1038,7 +1041,7 @@ function Footer() {
           </p>
           <div className="mt-6 flex items-center gap-2">
             {[
-              { icon: Linkedin, href: "https://linkedin.com/in/john-rys-clanor", label: "LinkedIn" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/john-rys-clanor-1b9828312/", label: "LinkedIn" },
               { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
               { icon: Phone, href: "tel:+639565365348", label: "Phone" },
             ].map(({ icon: Icon, href, label }) => (
