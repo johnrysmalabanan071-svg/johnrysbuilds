@@ -263,8 +263,8 @@ function Hero() {
         </div>
 
         <div className="reveal relative mx-auto w-full max-w-md lg:max-w-none">
-          <div className="absolute -inset-6 rounded-[2rem] bg-primary/95 translate-x-4 translate-y-4" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-primary bg-card">
+          <div className="absolute -inset-8 rounded-[2rem] bg-white/5 blur-2xl" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-card glow-ring">
             <img
               src={profileImg.url}
               alt="Portrait of John Rys M. Clanor"
@@ -272,22 +272,37 @@ function Hero() {
               height={1280}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/70 to-transparent p-6">
-              <div className="flex items-center justify-between text-primary-foreground">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/60 to-transparent p-6">
+              <div className="flex items-center justify-between">
                 <div>
                   <div className="font-display text-2xl">Est. 2024</div>
-                  <div className="text-xs uppercase tracking-widest opacity-80">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
                     Lipa City, PH
                   </div>
                 </div>
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-primary-foreground text-primary animate-floaty">
+                <div className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground animate-floaty">
                   <Sparkles className="h-5 w-5" />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Floating stat badge overlapping photo */}
+          <div className="absolute -bottom-6 -left-6 rounded-2xl border border-white/10 bg-card p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] animate-floaty">
+            <div className="flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground">
+                <Rocket className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="font-display text-xl leading-none">9+</div>
+                <div className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground">
+                  Automation Projects
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
 
       <div className="mt-16 flex flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted-foreground">
         <span>Scroll</span>
