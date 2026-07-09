@@ -77,17 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Alex Mercer — Designer & Developer Portfolio" },
+      { title: "John Rys M. Clanor — AI Automation Specialist" },
       {
         name: "description",
         content:
-          "Portfolio of Alex Mercer, an independent designer and developer crafting bold, editorial digital products.",
+          "Portfolio of John Rys M. Clanor — AI Automation Specialist building voice agents, CRM workflows, and lead systems with n8n, Make.com, Zapier, and OpenAI/Claude.",
       },
-      { property: "og:title", content: "Alex Mercer — Designer & Developer Portfolio" },
+      { property: "og:title", content: "John Rys M. Clanor — AI Automation Specialist" },
       {
         property: "og:description",
         content:
-          "Portfolio of Alex Mercer, an independent designer and developer crafting bold, editorial digital products.",
+          "AI-powered automations that eliminate manual work — voice agents, CRM workflows, and lead scoring systems.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
