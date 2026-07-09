@@ -1006,31 +1006,113 @@ function FieldRow({ label, children }: { label: string; children: React.ReactNod
 /* ---------------- Footer ---------------- */
 
 function Footer() {
+  const scrollTo = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   return (
-    <footer className="border-t border-border bg-primary text-primary-foreground">
-      <div className="overflow-hidden py-6">
-        <div className="flex whitespace-nowrap animate-marquee font-display text-6xl md:text-8xl">
+    <footer className="border-t border-border" style={{ backgroundColor: "var(--surface)" }}>
+      <div className="overflow-hidden border-b border-border py-6">
+        <div className="flex whitespace-nowrap animate-marquee font-display text-5xl md:text-7xl opacity-70">
           {Array.from({ length: 2 }).map((_, r) => (
             <div key={r} className="flex shrink-0">
               {["Automate", "Integrate", "Optimize", "Deliver"].map((w) => (
                 <span key={r + w} className="mx-8 flex items-center gap-8">
                   {w}
-                  <span className="inline-block h-3 w-3 rounded-full bg-primary-foreground" />
+                  <span className="inline-block h-3 w-3 rounded-full bg-foreground" />
                 </span>
               ))}
             </div>
           ))}
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-primary-foreground/10 px-6 py-6 text-sm md:flex-row">
-        <div className="text-primary-foreground/70">
-          © 2026 John Rys M. Clanor. All rights reserved.
+
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <div className="flex items-center gap-2 font-display text-2xl">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground text-sm font-bold">
+              J
+            </span>
+            <span>Clanor.</span>
+          </div>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+            AI Automation Specialist — turning manual work into automated systems that scale.
+          </p>
+          <div className="mt-6 flex items-center gap-2">
+            {[
+              { icon: Linkedin, href: "https://linkedin.com/in/john-rys-clanor", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
+              { icon: Phone, href: "tel:+639565365348", label: "Phone" },
+            ].map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="btn-press grid h-9 w-9 place-items-center rounded-full border border-border bg-card text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="text-primary-foreground/70">Built in Lipa City, Philippines.</div>
+
+        <div>
+          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Quick Links</div>
+          <ul className="mt-5 space-y-2.5 text-sm">
+            {NAV.map((n) => (
+              <li key={n.id}>
+                <button
+                  onClick={() => scrollTo(n.id)}
+                  className="link-underline text-foreground/80 hover:text-foreground"
+                >
+                  {n.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Services</div>
+          <ul className="mt-5 space-y-2.5 text-sm text-foreground/80">
+            <li>Workflow Automation</li>
+            <li>CRM & Marketing</li>
+            <li>Process Optimization</li>
+            <li>AI Agents & Chatbots</li>
+            <li>Lead Systems</li>
+            <li>API Integration</li>
+          </ul>
+        </div>
+
+        <div>
+          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Contact</div>
+          <ul className="mt-5 space-y-3 text-sm text-foreground/80">
+            <li className="flex items-start gap-2">
+              <Mail className="mt-0.5 h-4 w-4 text-muted-foreground" />
+              <a href="mailto:johnrysclanor22@gmail.com" className="link-underline">
+                johnrysclanor22@gmail.com
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <Phone className="mt-0.5 h-4 w-4 text-muted-foreground" />
+              <a href="tel:+639565365348" className="link-underline">
+                +63 956 536 5348
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <MapPin className="mt-0.5 h-4 w-4 text-muted-foreground" />
+              <span>Lipa City, Batangas, Philippines</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-border px-6 py-6 text-sm md:flex-row">
+        <div className="text-muted-foreground">© 2026 John Rys M. Clanor. All rights reserved.</div>
+        <div className="text-muted-foreground">Built in Lipa City, Philippines.</div>
       </div>
     </footer>
   );
 }
+
 
 /* ---------------- Shared ---------------- */
 
