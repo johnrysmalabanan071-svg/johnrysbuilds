@@ -782,18 +782,20 @@ function Results() {
   return (
     <section
       id="results"
-      className="relative overflow-hidden border-t border-border bg-primary text-primary-foreground py-24 md:py-32"
+      className="relative overflow-hidden border-t border-border py-24 md:py-32"
+      style={{ backgroundColor: "var(--surface)" }}
     >
-      <div className="pointer-events-none absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-primary-foreground/5 blur-3xl" />
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="pointer-events-none absolute inset-0 dot-grid opacity-40" />
+      <div className="pointer-events-none absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="reveal text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-primary-foreground/70">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-muted-foreground">
             Results & Impact
           </div>
           <h2 className="mt-6 font-display text-4xl sm:text-5xl">
             Real outcomes from <em className="italic">real automations</em>.
           </h2>
-          <p className="mt-4 mx-auto max-w-2xl text-primary-foreground/70">
+          <p className="mt-4 mx-auto max-w-2xl text-muted-foreground">
             Measurable time savings, faster response, and workflows that run themselves — pulled
             from live projects.
           </p>
@@ -803,21 +805,22 @@ function Results() {
           {RESULTS.map(({ icon: Icon, stat, desc }, i) => (
             <div
               key={stat}
-              className="reveal group relative flex h-full flex-col rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.04] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-foreground/50 hover:bg-primary-foreground/[0.08]"
+              className="reveal group relative flex h-full flex-col rounded-2xl border border-border bg-card p-7 card-lift"
               style={{ animationDelay: `${i * 90}ms` }}
             >
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary-foreground/10 text-primary-foreground transition-colors duration-300 group-hover:bg-primary-foreground group-hover:text-primary">
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-secondary text-foreground transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
                 <Icon className="h-6 w-6" />
               </div>
               <div className="mt-6 font-display text-2xl leading-tight sm:text-[1.75rem]">
                 {stat}
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">{desc}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{desc}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
+
   );
 }
 
