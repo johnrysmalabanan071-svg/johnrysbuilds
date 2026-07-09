@@ -656,21 +656,20 @@ function Projects() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className="btn-press relative pb-2 text-sm font-medium tracking-wide"
+              className={`relative bg-transparent border-0 p-0 pb-2 text-sm font-medium tracking-wide focus:outline-none focus-visible:outline-none transition-colors ${
+                filter === f
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              <span
-                className={
-                  filter === f ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }
-              >
-                {f}
-              </span>
+              {f}
               {filter === f && (
                 <span className="absolute inset-x-0 -bottom-[1px] h-[2px] bg-primary" />
               )}
             </button>
           ))}
         </div>
+
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p, i) => (
