@@ -18,6 +18,10 @@ import {
   X,
   GraduationCap,
   Award,
+  Rocket,
+  Layers,
+  ShieldCheck,
+  Cpu,
 } from "lucide-react";
 
 import { useReveal } from "@/hooks/use-reveal";
