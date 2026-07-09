@@ -314,7 +314,45 @@ function Hero() {
   );
 }
 
+/* ---------------- Stats Row ---------------- */
+
+const STATS = [
+  { icon: Workflow, num: "9+", label: "Automations Built" },
+  { icon: Layers, num: "3+", label: "Platforms Mastered" },
+  { icon: ShieldCheck, num: "5+", label: "Certifications" },
+  { icon: Cpu, num: "100%", label: "Self-Driven Projects" },
+];
+
+function StatsRow() {
+  return (
+    <section className="border-t border-border py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {STATS.map(({ icon: Icon, num, label }, i) => (
+            <div
+              key={label}
+              className="reveal group flex items-center gap-4 rounded-2xl border border-border bg-card p-6 card-lift"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-secondary text-foreground transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                <Icon className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="font-display text-3xl leading-none">{num}</div>
+                <div className="mt-1.5 text-xs uppercase tracking-widest text-muted-foreground">
+                  {label}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- Services ---------------- */
+
 
 const SERVICES = [
   {
