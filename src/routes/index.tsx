@@ -935,6 +935,7 @@ function Contact() {
                   key={label}
                   href={href}
                   aria-label={label}
+                  title={label}
                   className="btn-press grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
                 >
                   <Icon className="h-4 w-4" />
