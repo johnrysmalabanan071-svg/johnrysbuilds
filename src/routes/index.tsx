@@ -62,6 +62,7 @@ function Portfolio() {
       <Navbar />
       <main>
         <Hero />
+        <StatsRow />
         <Services />
         <Experience />
         <Projects />
