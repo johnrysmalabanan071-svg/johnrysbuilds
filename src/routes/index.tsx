@@ -929,6 +929,7 @@ function Contact() {
                 { icon: Linkedin, href: "https://www.linkedin.com/in/john-rys-clanor-1b9828312/", label: "LinkedIn" },
                 { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
                 { icon: Phone, href: "tel:+639565365348", label: "Phone" },
+                { icon: Briefcase, href: "https://v2.onlinejobs.ph/jobseekers/info/5163839", label: "OnlineJobs.ph" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
