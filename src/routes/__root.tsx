@@ -87,14 +87,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "AI-powered automations that eliminate manual work — voice agents, CRM workflows, and lead scoring systems.",
+          "Portfolio of John Rys M. Clanor — AI Automation Specialist building voice agents, CRM workflows, and lead systems with n8n, Make.com, Zapier, and OpenAI/Claude.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "John Rys M. Clanor — AI Automation Specialist" },
+      { name: "twitter:description", content: "Portfolio of John Rys M. Clanor — AI Automation Specialist building voice agents, CRM workflows, and lead systems with n8n, Make.com, Zapier, and OpenAI/Claude." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/6a52754f-4e89-46a2-8672-76a1c9aeac11" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/6a52754f-4e89-46a2-8672-76a1c9aeac11" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
