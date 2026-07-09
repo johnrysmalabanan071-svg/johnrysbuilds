@@ -895,7 +895,7 @@ function Contact() {
                 <span className="link-underline">+63 956 536 5348</span>
               </a>
               <a
-                href="https://linkedin.com/in/john-rys-clanor"
+                href="https://www.linkedin.com/in/john-rys-clanor-1b9828312/"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-3 text-sm text-foreground"
@@ -903,7 +903,7 @@ function Contact() {
                 <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
                   <Linkedin className="h-4 w-4" />
                 </span>
-                <span className="link-underline">linkedin.com/in/john-rys-clanor</span>
+                <span className="link-underline">linkedin.com/in/john-rys-clanor-1b9828312</span>
               </a>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
@@ -915,7 +915,7 @@ function Contact() {
 
             <div className="mt-10 flex items-center gap-3">
               {[
-                { icon: Linkedin, href: "https://linkedin.com/in/john-rys-clanor", label: "LinkedIn" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/john-rys-clanor-1b9828312/", label: "LinkedIn" },
                 { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
                 { icon: Phone, href: "tel:+639565365348", label: "Phone" },
               ].map(({ icon: Icon, href, label }) => (
@@ -1028,7 +1028,7 @@ function Footer() {
           </p>
           <div className="mt-6 flex items-center gap-2">
             {[
-              { icon: Linkedin, href: "https://linkedin.com/in/john-rys-clanor", label: "LinkedIn" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/john-rys-clanor-1b9828312/", label: "LinkedIn" },
               { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
               { icon: Phone, href: "tel:+639565365348", label: "Phone" },
             ].map(({ icon: Icon, href, label }) => (
