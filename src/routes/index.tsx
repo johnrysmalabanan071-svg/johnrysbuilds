@@ -32,16 +32,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 
-import profileImg from "@/assets/johnrys-transparent.png.asset.json";
-import aiAppointment from "@/assets/ai-appointment-setter.jpeg.asset.json";
-import aiJobScraper from "@/assets/ai-job-scraper.png.asset.json";
-import fbAgent from "@/assets/fb-page-ai-agent.png.asset.json";
-import autoGmail from "@/assets/auto-sort-gmail.jpg.asset.json";
-import xeroAsana from "@/assets/xero-asana.jpg.asset.json";
-import leadMagnet from "@/assets/lead-magnet.jpg.asset.json";
-import asanaCrm from "@/assets/asana-crm.png.asset.json";
-import leadEnrichment from "@/assets/lead-enrichment.png.asset.json";
-import smartLeadScoring from "@/assets/smart-lead-scoring.png.asset.json";
+const profileImg = "/johnrys.png";
+const aiAppointment = "/ai-appointment-setter.jpeg";
+const aiJobScraper = "/ai-job-scraper-resume-optimizer.png";
+const fbAgent = "/fb-page-ai-agent.png";
+const autoGmail = "/auto-sort-gmail.jpg";
+const xeroAsana = "/xero-to-asana.jpg";
+const leadMagnet = "/lead-magnet.jpg";
+const asanaCrm = "/asana-crm-lead-engagement.png";
+const leadEnrichment = "/lead-enrichment.png";
+const smartLeadScoring = "/smart-lead-scoring.png";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -270,7 +270,7 @@ function Hero() {
             <div className="absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-2xl" />
           </div>
           <img
-            src={profileImg.url}
+            src={profileImg}
             alt="Portrait of John Rys M. Clanor"
             width={1024}
             height={1024}
@@ -564,7 +564,7 @@ const PROJECTS = [
     desc: "A 24/7 voice AI agent handling the complete appointment lifecycle — availability checks, booking, updates, cancellations, and call-summary logging across 5 connected sub-workflows. Integrated with Google Calendar and Airtable for zero manual data entry, eliminating double-booking and transcription errors.",
     tags: ["n8n", "Vapi", "Google Calendar", "Airtable", "Webhooks"],
     category: "AI Agents",
-    img: aiAppointment.url,
+    img: aiAppointment,
     featured: true,
   },
   {
@@ -572,56 +572,56 @@ const PROJECTS = [
     desc: "A Slack-triggered workflow that scrapes job listings and uses an AI agent to tailor a resume for each posting, delivering results via Slack and Gmail. Cut per-application prep time from 15–30 minutes to near-automatic.",
     tags: ["n8n", "AI Agent", "Slack", "Gmail"],
     category: "Workflow Automation",
-    img: aiJobScraper.url,
+    img: aiJobScraper,
   },
   {
     title: "FB Page AI Agent",
     desc: "A webhook-driven Facebook Page chatbot with conversational memory and document-grounded responses powered by Gemini, enabling automated, context-aware customer replies around the clock.",
     tags: ["n8n", "Gemini", "Webhooks", "Chatbot"],
     category: "AI Agents",
-    img: fbAgent.url,
+    img: fbAgent,
   },
   {
     title: "Auto-Sort Gmail Attachments",
     desc: "An AI-powered workflow that analyzes email attachments, generates descriptive filenames, and automatically files them to Google Drive with a full audit log — removing manual sorting entirely.",
     tags: ["Make.com", "AI", "Google Drive", "Gmail"],
     category: "Workflow Automation",
-    img: autoGmail.url,
+    img: autoGmail,
   },
   {
     title: "Xero-to-Asana Transaction Export",
     desc: "Automated pulling of Xero transaction data into Google Sheets and Asana, replacing manual CSV exports and saving an estimated 10–20 minutes per task cycle.",
     tags: ["Make.com", "Xero", "Google Sheets", "Asana"],
     category: "Business Process",
-    img: xeroAsana.url,
+    img: xeroAsana,
   },
   {
     title: "Lead Magnet Qualifier",
     desc: "AI-scored lead routing from Google Forms to Gmail/Slack for high-priority leads, with automatic logging of lower-priority leads so nothing falls through the cracks.",
     tags: ["Make.com", "AI Scoring", "Google Forms", "Slack"],
     category: "Lead Generation",
-    img: leadMagnet.url,
+    img: leadMagnet,
   },
   {
     title: "Asana CRM Lead Engagement Workflow",
     desc: "A 5-stage, AI-personalized lead nurture sequence — new, no response, quoted, approved, closed — built entirely on Asana status triggers to automate follow-up at every stage.",
     tags: ["Zapier", "Asana", "AI Personalization"],
     category: "CRM Automation",
-    img: asanaCrm.url,
+    img: asanaCrm,
   },
   {
     title: "Automated Lead Enrichment",
     desc: "Apollo-based lead enrichment and priority triaging that cut speed-to-lead from hours to near-instant, ensuring high-value leads get immediate attention.",
     tags: ["Zapier", "Apollo", "Lead Scoring"],
     category: "Lead Generation",
-    img: leadEnrichment.url,
+    img: leadEnrichment,
   },
   {
     title: "Smart Lead Scoring & Distribution",
     desc: "Automated form data cleaning, lead scoring, and inquiry-based routing to improve response time and maintain data consistency across the pipeline.",
     tags: ["Zapier", "Lead Scoring", "Automation"],
     category: "Lead Generation",
-    img: smartLeadScoring.url,
+    img: smartLeadScoring,
   },
 ];
 
