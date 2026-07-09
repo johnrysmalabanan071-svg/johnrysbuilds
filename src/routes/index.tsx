@@ -195,8 +195,10 @@ function Navbar() {
 function Hero() {
   return (
     <section id="home" className="relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32">
+      <div className="pointer-events-none absolute inset-0 dot-grid opacity-60" />
       <div className="pointer-events-none absolute -top-24 -left-24 h-[500px] w-[500px] ink-blob rounded-full" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-[420px] w-[420px] ink-blob rounded-full opacity-70" />
+
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-[1.2fr_1fr] lg:items-center">
         <div className="reveal">
