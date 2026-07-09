@@ -264,31 +264,20 @@ function Hero() {
         </div>
 
         <div className="reveal relative mx-auto w-full max-w-md lg:max-w-none">
-          <div className="absolute -inset-8 rounded-[2rem] bg-white/5 blur-2xl" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-card glow-ring">
-            <img
-              src={profileImg.url}
-              alt="Portrait of John Rys M. Clanor"
-              width={1024}
-              height={1280}
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/60 to-transparent p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="font-display text-2xl">Est. 2024</div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
-                    Lipa City, PH
-                  </div>
-                </div>
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground animate-floaty">
-                  <Sparkles className="h-5 w-5" />
-                </div>
-              </div>
-            </div>
+          {/* Soft glow behind the transparent portrait */}
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute left-1/2 top-1/2 h-[85%] w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute left-1/2 top-1/2 h-[60%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-2xl" />
           </div>
-          {/* Floating stat badge overlapping photo */}
-          <div className="absolute -bottom-6 -left-6 rounded-2xl border border-white/10 bg-card p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] animate-floaty">
+          <img
+            src={profileImg.url}
+            alt="Portrait of John Rys M. Clanor"
+            width={1024}
+            height={1024}
+            className="relative h-auto w-full object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)]"
+          />
+          {/* Floating stat badge overlapping photo (bottom-right) */}
+          <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 rounded-2xl border border-white/10 bg-card p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] animate-floaty">
             <div className="flex items-center gap-3">
               <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground">
                 <Rocket className="h-5 w-5" />
@@ -302,6 +291,7 @@ function Hero() {
             </div>
           </div>
         </div>
+
       </div>
 
 
