@@ -18,6 +18,10 @@ import {
   X,
   GraduationCap,
   Award,
+  Rocket,
+  Layers,
+  ShieldCheck,
+  Cpu,
 } from "lucide-react";
 
 import { useReveal } from "@/hooks/use-reveal";
@@ -58,6 +62,7 @@ function Portfolio() {
       <Navbar />
       <main>
         <Hero />
+        <StatsRow />
         <Services />
         <Experience />
         <Projects />
@@ -190,8 +195,10 @@ function Navbar() {
 function Hero() {
   return (
     <section id="home" className="relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32">
+      <div className="pointer-events-none absolute inset-0 dot-grid opacity-60" />
       <div className="pointer-events-none absolute -top-24 -left-24 h-[500px] w-[500px] ink-blob rounded-full" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-[420px] w-[420px] ink-blob rounded-full opacity-70" />
+
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-[1.2fr_1fr] lg:items-center">
         <div className="reveal">
@@ -256,8 +263,8 @@ function Hero() {
         </div>
 
         <div className="reveal relative mx-auto w-full max-w-md lg:max-w-none">
-          <div className="absolute -inset-6 rounded-[2rem] bg-primary/95 translate-x-4 translate-y-4" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-primary bg-card">
+          <div className="absolute -inset-8 rounded-[2rem] bg-white/5 blur-2xl" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-card glow-ring">
             <img
               src={profileImg.url}
               alt="Portrait of John Rys M. Clanor"
@@ -265,22 +272,37 @@ function Hero() {
               height={1280}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/70 to-transparent p-6">
-              <div className="flex items-center justify-between text-primary-foreground">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/60 to-transparent p-6">
+              <div className="flex items-center justify-between">
                 <div>
                   <div className="font-display text-2xl">Est. 2024</div>
-                  <div className="text-xs uppercase tracking-widest opacity-80">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
                     Lipa City, PH
                   </div>
                 </div>
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-primary-foreground text-primary animate-floaty">
+                <div className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground animate-floaty">
                   <Sparkles className="h-5 w-5" />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Floating stat badge overlapping photo */}
+          <div className="absolute -bottom-6 -left-6 rounded-2xl border border-white/10 bg-card p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] animate-floaty">
+            <div className="flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground">
+                <Rocket className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="font-display text-xl leading-none">9+</div>
+                <div className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground">
+                  Automation Projects
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
 
       <div className="mt-16 flex flex-col items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted-foreground">
         <span>Scroll</span>
@@ -292,7 +314,45 @@ function Hero() {
   );
 }
 
+/* ---------------- Stats Row ---------------- */
+
+const STATS = [
+  { icon: Workflow, num: "9+", label: "Automations Built" },
+  { icon: Layers, num: "3+", label: "Platforms Mastered" },
+  { icon: ShieldCheck, num: "5+", label: "Certifications" },
+  { icon: Cpu, num: "100%", label: "Self-Driven Projects" },
+];
+
+function StatsRow() {
+  return (
+    <section className="border-t border-border py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {STATS.map(({ icon: Icon, num, label }, i) => (
+            <div
+              key={label}
+              className="reveal group flex items-center gap-4 rounded-2xl border border-border bg-card p-6 card-lift"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-secondary text-foreground transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                <Icon className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="font-display text-3xl leading-none">{num}</div>
+                <div className="mt-1.5 text-xs uppercase tracking-widest text-muted-foreground">
+                  {label}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- Services ---------------- */
+
 
 const SERVICES = [
   {
@@ -652,13 +712,18 @@ function Projects() {
                 </div>
               </div>
               <div className="flex flex-col gap-3 p-5">
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                    {p.category}
+                <div className="flex items-baseline gap-3">
+                  <span className="font-display text-2xl text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                      {p.category}
+                    </div>
+                    <h3 className="mt-1 font-display text-xl">{p.title}</h3>
                   </div>
-                  <h3 className="mt-1 font-display text-xl">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
                 </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {p.tags.map((t) => (
                     <span
@@ -717,18 +782,20 @@ function Results() {
   return (
     <section
       id="results"
-      className="relative overflow-hidden border-t border-border bg-primary text-primary-foreground py-24 md:py-32"
+      className="relative overflow-hidden border-t border-border py-24 md:py-32"
+      style={{ backgroundColor: "var(--surface)" }}
     >
-      <div className="pointer-events-none absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-primary-foreground/5 blur-3xl" />
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="pointer-events-none absolute inset-0 dot-grid opacity-40" />
+      <div className="pointer-events-none absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="reveal text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-primary-foreground/70">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-muted-foreground">
             Results & Impact
           </div>
           <h2 className="mt-6 font-display text-4xl sm:text-5xl">
             Real outcomes from <em className="italic">real automations</em>.
           </h2>
-          <p className="mt-4 mx-auto max-w-2xl text-primary-foreground/70">
+          <p className="mt-4 mx-auto max-w-2xl text-muted-foreground">
             Measurable time savings, faster response, and workflows that run themselves — pulled
             from live projects.
           </p>
@@ -738,21 +805,22 @@ function Results() {
           {RESULTS.map(({ icon: Icon, stat, desc }, i) => (
             <div
               key={stat}
-              className="reveal group relative flex h-full flex-col rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.04] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-foreground/50 hover:bg-primary-foreground/[0.08]"
+              className="reveal group relative flex h-full flex-col rounded-2xl border border-border bg-card p-7 card-lift"
               style={{ animationDelay: `${i * 90}ms` }}
             >
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary-foreground/10 text-primary-foreground transition-colors duration-300 group-hover:bg-primary-foreground group-hover:text-primary">
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-secondary text-foreground transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
                 <Icon className="h-6 w-6" />
               </div>
               <div className="mt-6 font-display text-2xl leading-tight sm:text-[1.75rem]">
                 {stat}
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">{desc}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{desc}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
+
   );
 }
 
@@ -772,122 +840,155 @@ function Contact() {
 
   return (
     <section id="contact" className="border-t border-border py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-2 lg:gap-24">
-        <div className="reveal">
-          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Contact</div>
-          <h2 className="mt-4 font-display text-5xl leading-[0.95] sm:text-6xl">
-            Let&apos;s Automate <em className="italic">Something</em>.
-          </h2>
-          <p className="mt-6 max-w-md text-muted-foreground leading-relaxed">
-            Have a repetitive process draining your time, or an idea for an AI agent? I&apos;d
-            love to hear about it.
-          </p>
-
-          <div className="mt-10 space-y-4">
-            <a
-              href="mailto:johnrysclanor22@gmail.com"
-              className="flex items-center gap-3 text-sm text-foreground"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-border">
-                <Mail className="h-4 w-4" />
-              </span>
-              <span className="link-underline">johnrysclanor22@gmail.com</span>
-            </a>
-            <a
-              href="tel:+639565365348"
-              className="flex items-center gap-3 text-sm text-foreground"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-border">
-                <Phone className="h-4 w-4" />
-              </span>
-              <span className="link-underline">+63 956 536 5348</span>
-            </a>
-            <a
-              href="https://linkedin.com/in/john-rys-clanor"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 text-sm text-foreground"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-border">
-                <Linkedin className="h-4 w-4" />
-              </span>
-              <span className="link-underline">linkedin.com/in/john-rys-clanor</span>
-            </a>
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-border">
-                <MapPin className="h-4 w-4" />
-              </span>
-              <span>Lipa City, Batangas, Philippines</span>
-            </div>
-          </div>
-
-          <div className="mt-10 flex items-center gap-3">
-            {[
-              {
-                icon: Linkedin,
-                href: "https://linkedin.com/in/john-rys-clanor",
-                label: "LinkedIn",
-              },
-              { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
-              { icon: Phone, href: "tel:+639565365348", label: "Phone" },
-            ].map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="btn-press grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+      <div className="mx-auto max-w-7xl px-6">
+        {/* CTA Banner */}
+        <div className="reveal relative overflow-hidden rounded-3xl border border-border p-10 md:p-14" style={{ backgroundColor: "var(--surface)" }}>
+          <div className="pointer-events-none absolute inset-0 dot-grid opacity-40" />
+          <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+          <div className="relative grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                Let&apos;s Work Together
+              </div>
+              <h2 className="mt-6 font-display text-4xl leading-[1.05] sm:text-5xl md:text-6xl font-semibold">
+                Have a project <em className="italic">in mind?</em>
+              </h2>
+              <p className="mt-5 max-w-md text-muted-foreground leading-relaxed">
+                I&apos;m always open to discussing new projects, automation ideas, or opportunities to help your business run itself.
+              </p>
+              <Button
+                size="lg"
+                onClick={() => document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" })}
+                className="btn-press mt-8 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 gap-2 px-6"
               >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+                Get In Touch <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
+            <div className="relative hidden md:flex justify-center">
+              <div className="relative grid h-56 w-56 place-items-center rounded-full border border-white/10 bg-card animate-floaty">
+                <div className="absolute inset-0 rounded-full bg-white/5 blur-2xl" />
+                <Rocket className="relative h-24 w-24 text-foreground" />
+                <span className="absolute -top-2 -right-2 grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground">
+                  <Sparkles className="h-5 w-5" />
+                </span>
+                <span className="absolute -bottom-2 -left-2 grid h-10 w-10 place-items-center rounded-full bg-card border border-border">
+                  <Zap className="h-4 w-4" />
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <form
-          onSubmit={onSubmit}
-          className="reveal rounded-3xl border border-border bg-card p-8 shadow-[0_1px_0_0_rgba(0,0,0,0.04)] md:p-10"
-        >
-          <div className="space-y-6">
-            <FieldRow label="Your Name">
-              <Input
-                required
-                name="name"
-                placeholder="John Doe"
-                className="h-12 rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
-              />
-            </FieldRow>
-            <FieldRow label="Your Email">
-              <Input
-                required
-                type="email"
-                name="email"
-                placeholder="you@company.com"
-                className="h-12 rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
-              />
-            </FieldRow>
-            <FieldRow label="Tell me about your project or process">
-              <Textarea
-                required
-                name="message"
-                rows={5}
-                placeholder="What repetitive task or workflow would you like to automate?"
-                className="rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
-              />
-            </FieldRow>
+        {/* Form + Contact info */}
+        <div id="contact-form" className="mt-16 grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
+          <div className="reveal">
+            <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Contact</div>
+            <h2 className="mt-4 font-display text-4xl leading-[0.95] sm:text-5xl font-semibold">
+              Let&apos;s Automate <em className="italic">Something</em>.
+            </h2>
+            <p className="mt-6 max-w-md text-muted-foreground leading-relaxed">
+              Have a repetitive process draining your time, or an idea for an AI agent? I&apos;d
+              love to hear about it.
+            </p>
+
+            <div className="mt-10 space-y-4">
+              <a href="mailto:johnrysclanor22@gmail.com" className="flex items-center gap-3 text-sm text-foreground">
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <Mail className="h-4 w-4" />
+                </span>
+                <span className="link-underline">johnrysclanor22@gmail.com</span>
+              </a>
+              <a href="tel:+639565365348" className="flex items-center gap-3 text-sm text-foreground">
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <Phone className="h-4 w-4" />
+                </span>
+                <span className="link-underline">+63 956 536 5348</span>
+              </a>
+              <a
+                href="https://linkedin.com/in/john-rys-clanor"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 text-sm text-foreground"
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <Linkedin className="h-4 w-4" />
+                </span>
+                <span className="link-underline">linkedin.com/in/john-rys-clanor</span>
+              </a>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <span className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card">
+                  <MapPin className="h-4 w-4" />
+                </span>
+                <span>Lipa City, Batangas, Philippines</span>
+              </div>
+            </div>
+
+            <div className="mt-10 flex items-center gap-3">
+              {[
+                { icon: Linkedin, href: "https://linkedin.com/in/john-rys-clanor", label: "LinkedIn" },
+                { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
+                { icon: Phone, href: "tel:+639565365348", label: "Phone" },
+              ].map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="btn-press grid h-11 w-11 place-items-center rounded-full border border-border bg-card text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
-          <Button
-            type="submit"
-            disabled={submitting}
-            size="lg"
-            className="btn-press mt-8 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
+          <form
+            onSubmit={onSubmit}
+            className="reveal rounded-3xl border border-border bg-card p-8 md:p-10"
+            style={{ boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6)" }}
           >
-            {submitting ? "Sending…" : "Send Message"}
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </form>
+            <div className="space-y-6">
+              <FieldRow label="Your Name">
+                <Input
+                  required
+                  name="name"
+                  placeholder="John Doe"
+                  className="h-12 rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30"
+                />
+              </FieldRow>
+              <FieldRow label="Your Email">
+                <Input
+                  required
+                  type="email"
+                  name="email"
+                  placeholder="you@company.com"
+                  className="h-12 rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30"
+                />
+              </FieldRow>
+              <FieldRow label="Tell me about your project or process">
+                <Textarea
+                  required
+                  name="message"
+                  rows={5}
+                  placeholder="What repetitive task or workflow would you like to automate?"
+                  className="rounded-xl border-border bg-background focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30"
+                />
+              </FieldRow>
+            </div>
+
+            <Button
+              type="submit"
+              disabled={submitting}
+              size="lg"
+              className="btn-press mt-8 w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
+            >
+              {submitting ? "Sending…" : "Send Message"}
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </form>
+        </div>
       </div>
     </section>
+
   );
 }
 
@@ -905,31 +1006,113 @@ function FieldRow({ label, children }: { label: string; children: React.ReactNod
 /* ---------------- Footer ---------------- */
 
 function Footer() {
+  const scrollTo = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   return (
-    <footer className="border-t border-border bg-primary text-primary-foreground">
-      <div className="overflow-hidden py-6">
-        <div className="flex whitespace-nowrap animate-marquee font-display text-6xl md:text-8xl">
+    <footer className="border-t border-border" style={{ backgroundColor: "var(--surface)" }}>
+      <div className="overflow-hidden border-b border-border py-6">
+        <div className="flex whitespace-nowrap animate-marquee font-display text-5xl md:text-7xl opacity-70">
           {Array.from({ length: 2 }).map((_, r) => (
             <div key={r} className="flex shrink-0">
               {["Automate", "Integrate", "Optimize", "Deliver"].map((w) => (
                 <span key={r + w} className="mx-8 flex items-center gap-8">
                   {w}
-                  <span className="inline-block h-3 w-3 rounded-full bg-primary-foreground" />
+                  <span className="inline-block h-3 w-3 rounded-full bg-foreground" />
                 </span>
               ))}
             </div>
           ))}
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-primary-foreground/10 px-6 py-6 text-sm md:flex-row">
-        <div className="text-primary-foreground/70">
-          © 2026 John Rys M. Clanor. All rights reserved.
+
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <div className="flex items-center gap-2 font-display text-2xl">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground text-sm font-bold">
+              J
+            </span>
+            <span>Clanor.</span>
+          </div>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+            AI Automation Specialist — turning manual work into automated systems that scale.
+          </p>
+          <div className="mt-6 flex items-center gap-2">
+            {[
+              { icon: Linkedin, href: "https://linkedin.com/in/john-rys-clanor", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:johnrysclanor22@gmail.com", label: "Email" },
+              { icon: Phone, href: "tel:+639565365348", label: "Phone" },
+            ].map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="btn-press grid h-9 w-9 place-items-center rounded-full border border-border bg-card text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
         </div>
-        <div className="text-primary-foreground/70">Built in Lipa City, Philippines.</div>
+
+        <div>
+          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Quick Links</div>
+          <ul className="mt-5 space-y-2.5 text-sm">
+            {NAV.map((n) => (
+              <li key={n.id}>
+                <button
+                  onClick={() => scrollTo(n.id)}
+                  className="link-underline text-foreground/80 hover:text-foreground"
+                >
+                  {n.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Services</div>
+          <ul className="mt-5 space-y-2.5 text-sm text-foreground/80">
+            <li>Workflow Automation</li>
+            <li>CRM & Marketing</li>
+            <li>Process Optimization</li>
+            <li>AI Agents & Chatbots</li>
+            <li>Lead Systems</li>
+            <li>API Integration</li>
+          </ul>
+        </div>
+
+        <div>
+          <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Contact</div>
+          <ul className="mt-5 space-y-3 text-sm text-foreground/80">
+            <li className="flex items-start gap-2">
+              <Mail className="mt-0.5 h-4 w-4 text-muted-foreground" />
+              <a href="mailto:johnrysclanor22@gmail.com" className="link-underline">
+                johnrysclanor22@gmail.com
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <Phone className="mt-0.5 h-4 w-4 text-muted-foreground" />
+              <a href="tel:+639565365348" className="link-underline">
+                +63 956 536 5348
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <MapPin className="mt-0.5 h-4 w-4 text-muted-foreground" />
+              <span>Lipa City, Batangas, Philippines</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-border px-6 py-6 text-sm md:flex-row">
+        <div className="text-muted-foreground">© 2026 John Rys M. Clanor. All rights reserved.</div>
+        <div className="text-muted-foreground">Built in Lipa City, Philippines.</div>
       </div>
     </footer>
   );
 }
+
 
 /* ---------------- Shared ---------------- */
 

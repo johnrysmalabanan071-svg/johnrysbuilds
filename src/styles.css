@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -37,38 +37,42 @@
   --color-ink: var(--ink);
   --color-paper: var(--paper);
   --color-mist: var(--mist);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 1rem;
 
-  --ink: oklch(0.15 0 0);
-  --paper: oklch(0.985 0 0);
-  --mist: oklch(0.955 0 0);
+  --ink: oklch(0.985 0 0);
+  --paper: oklch(0.12 0 0);
+  --mist: oklch(0.2 0 0);
 
-  --background: oklch(0.985 0 0);
-  --foreground: oklch(0.15 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0 0);
-  --primary: oklch(0.15 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.955 0 0);
-  --secondary-foreground: oklch(0.15 0 0);
-  --muted: oklch(0.955 0 0);
-  --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.955 0 0);
-  --accent-foreground: oklch(0.15 0 0);
-  --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.9 0 0);
-  --ring: oklch(0.15 0 0);
+  --background: oklch(0.13 0 0);
+  --foreground: oklch(0.98 0 0);
+  --surface: oklch(0.16 0 0);
+  --surface-2: oklch(0.19 0 0);
+  --card: oklch(0.16 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.16 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.98 0 0);
+  --primary-foreground: oklch(0.12 0 0);
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.2 0 0);
+  --muted-foreground: oklch(0.68 0 0);
+  --accent: oklch(0.22 0 0);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 0.08);
+  --input: oklch(1 0 0 / 0.12);
+  --ring: oklch(0.98 0 0);
 
-  --shadow-ink: 0 20px 60px -20px oklch(0.15 0 0 / 0.45);
-  --shadow-glow: 0 0 0 1px oklch(0.15 0 0), 0 25px 50px -12px oklch(0.15 0 0 / 0.4);
-  --gradient-ink: radial-gradient(60% 60% at 50% 40%, oklch(0.15 0 0 / 0.35) 0%, transparent 70%);
+  --shadow-ink: 0 20px 60px -20px oklch(0 0 0 / 0.6);
+  --shadow-glow: 0 0 0 1px oklch(1 0 0 / 0.15), 0 20px 60px -15px oklch(1 0 0 / 0.15);
+  --gradient-ink: radial-gradient(60% 60% at 50% 40%, oklch(1 0 0 / 0.18) 0%, transparent 70%);
 }
 
 @layer base {
@@ -80,18 +84,23 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  ::selection { background: var(--ink); color: var(--paper); }
+  ::selection { background: var(--foreground); color: var(--background); }
 }
 
 @utility font-display {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 @utility ink-blob {
   background: var(--gradient-ink);
-  filter: blur(40px);
+  filter: blur(60px);
+}
+
+@utility dot-grid {
+  background-image: radial-gradient(oklch(1 0 0 / 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 @utility link-underline {
@@ -115,15 +124,20 @@
 @utility btn-press {
   transition: transform 0.15s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
   &:active { transform: scale(0.97); }
+  &:hover { box-shadow: 0 0 30px -5px oklch(1 0 0 / 0.35); }
 }
 
 @utility card-lift {
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
   &:hover {
     transform: translateY(-6px);
-    box-shadow: var(--shadow-ink);
-    border-color: var(--ink);
+    box-shadow: 0 25px 60px -20px oklch(0 0 0 / 0.7), 0 0 0 1px oklch(1 0 0 / 0.15);
+    border-color: oklch(1 0 0 / 0.25);
   }
+}
+
+@utility glow-ring {
+  box-shadow: 0 0 0 1px oklch(1 0 0 / 0.1), 0 0 60px -10px oklch(1 0 0 / 0.15);
 }
 
 @keyframes reveal {
