@@ -712,12 +712,18 @@ function Projects() {
                 </div>
               </div>
               <div className="flex flex-col gap-3 p-5">
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                    {p.category}
+                <div className="flex items-baseline gap-3">
+                  <span className="font-display text-2xl text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                      {p.category}
+                    </div>
+                    <h3 className="mt-1 font-display text-xl">{p.title}</h3>
                   </div>
-                  <h3 className="mt-1 font-display text-xl">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {p.tags.map((t) => (
