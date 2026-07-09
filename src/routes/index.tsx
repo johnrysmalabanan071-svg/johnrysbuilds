@@ -724,7 +724,6 @@ function Projects() {
                   </div>
                 </div>
                 <p className="text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-                </div>
                 <div className="flex flex-wrap gap-1.5">
                   {p.tags.map((t) => (
                     <span
