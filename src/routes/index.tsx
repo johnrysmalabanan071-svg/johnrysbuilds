@@ -32,7 +32,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 
-import profileImg from "@/assets/profile.png.asset.json";
+import profileImg from "@/assets/johnrys-transparent.png.asset.json";
 import aiAppointment from "@/assets/ai-appointment-setter.jpeg.asset.json";
 import aiJobScraper from "@/assets/ai-job-scraper.png.asset.json";
 import fbAgent from "@/assets/fb-page-ai-agent.png.asset.json";
