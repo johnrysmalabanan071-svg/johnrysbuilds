@@ -252,7 +252,7 @@ function Hero() {
             </div>
             <div className="h-10 w-px bg-border" />
             <div>
-              <div className="font-display text-3xl text-foreground">5</div>
+              <div className="font-display text-3xl text-foreground">7</div>
               <div className="mt-1 uppercase tracking-widest text-xs">Certifications</div>
             </div>
             <div className="h-10 w-px bg-border" />
@@ -310,7 +310,7 @@ function Hero() {
 const STATS = [
   { icon: Workflow, num: "9+", label: "Automations Built" },
   { icon: Layers, num: "3+", label: "Platforms Mastered" },
-  { icon: ShieldCheck, num: "5+", label: "Certifications" },
+  { icon: ShieldCheck, num: "7+", label: "Certifications" },
   { icon: Cpu, num: "100%", label: "Self-Driven Projects" },
 ];
 
@@ -455,6 +455,8 @@ const CERTIFICATIONS = [
   "AI Fluency: Framework & Foundations — Anthropic (2026)",
   "Essentials: Your First Workflows — n8n Academy (2026)",
   "Agents and Workflows — n8n Academy (2026)",
+  "Integrations: APIs & Connected Workflows — n8n Academy (2026)",
+  "In Practice: AI, Testing & Best Practices — n8n Academy (2026)",
 ];
 
 function Experience() {
