@@ -563,13 +563,6 @@ function Experience() {
 
 const PROJECTS = [
   {
-  title: "Lead Capture with Instant Follow-Up & Send Proposals",
-  desc: "A GoHighLevel automation that captures inbound leads via form submission and immediately triggers a multi-touch follow-up sequence — tagging, SMS, and a voice call — with timed re-engagement if a lead goes quiet. Reply content is evaluated to auto-branch qualified leads straight to proposal and contract delivery, while unresponsive leads are routed into a nurture workflow instead of falling through the cracks.",
-  tags: ["GoHighLevel", "SMS", "Voice Call", "Conditional Logic"],
-  category: "CRM Automation",
-  img: leadCaptureProposals,
-  },
-  {
     title: "AI Appointment Setter",
     desc: "A 24/7 voice AI agent handling the complete appointment lifecycle — availability checks, booking, updates, cancellations, and call-summary logging across 5 connected sub-workflows. Integrated with Google Calendar and Airtable for zero manual data entry, eliminating double-booking and transcription errors.",
     tags: ["n8n", "Vapi", "Google Calendar", "Airtable", "Webhooks"],
@@ -632,6 +625,13 @@ const PROJECTS = [
     tags: ["Zapier", "Lead Scoring", "Automation"],
     category: "Lead Generation",
     img: smartLeadScoring,
+  },
+  {
+  title: "Lead Capture with Instant Follow-Up & Send Proposals",
+  desc: "A GoHighLevel automation that captures inbound leads via form submission and immediately triggers a multi-touch follow-up sequence — tagging, SMS, and a voice call — with timed re-engagement if a lead goes quiet. Reply content is evaluated to auto-branch qualified leads straight to proposal and contract delivery, while unresponsive leads are routed into a nurture workflow instead of falling through the cracks.",
+  tags: ["GoHighLevel", "SMS", "Voice Call", "Conditional Logic"],
+  category: "CRM Automation",
+  img: leadCaptureProposals,
   },
 ];
 
