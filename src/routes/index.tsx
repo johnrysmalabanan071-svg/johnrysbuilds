@@ -33,7 +33,7 @@ import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 
 const profileImg = "/johnrys.png";
-const aiAppointment = "/ai-appointment-setter.jpeg";
+const aiAppointment = "/ai-appointment-setter.png";
 const aiJobScraper = "/ai-job-scraper-resume-optimizer.png";
 const fbAgent = "/fb-page-ai-agent.png";
 const autoGmail = "/auto-sort-gmail.jpg";
